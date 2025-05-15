@@ -7,7 +7,8 @@ export abstract class Planet{
         this.distance = distance
     }
 
-    abstract PlanetAccepts(load: Load): boolean;
+    abstract PlanetType(): string;
+    abstract PlanetAcceptsLoad(load: Load): boolean;
 }
 
 export class Geasous extends Planet{
@@ -16,10 +17,14 @@ export class Geasous extends Planet{
         super(distance)
     }
 
-    PlanetAccepts(load: Load): boolean {
+    PlanetAcceptsLoad(load: Load): boolean {
         if (load instanceof Supplies || load instanceof OxygenTanks || load instanceof CommunicationModules) {
             return true
         } return false
+    }
+
+    PlanetType(): string {
+        return "Geaseous"
     }
 }
 
@@ -29,11 +34,15 @@ export class Rocky extends Planet{
         super(distance)
     }
 
-    PlanetAccepts(load: Load): boolean {
+    PlanetAcceptsLoad(load: Load): boolean {
         if (load instanceof Load) {
             return true
         } return false
-}
+    }
+
+    PlanetType(): string {
+        return "Rocky"
+    }
 }
 
 export class Icy extends Planet{
@@ -42,10 +51,14 @@ export class Icy extends Planet{
         super(distance)
     }
 
-    PlanetAccepts(load: Load): boolean {
+    PlanetAcceptsLoad(load: Load): boolean {
         if (load instanceof Load) {
             return true
         } return false
+    }
+
+    PlanetType(): string {
+        return "Icy"
     }
 }
 
@@ -55,7 +68,7 @@ export class Corrosive extends Planet{
         super(distance)
     }
 
-    PlanetAccepts(load: Load): boolean {
+    PlanetAcceptsLoad(load: Load): boolean {
         if (
             load instanceof Supplies || 
             load instanceof OxygenTanks || 
@@ -63,6 +76,10 @@ export class Corrosive extends Planet{
             load instanceof ArmoredCapsules
         ){ return true
         } return false
+    }
+
+    PlanetType(): string {
+        return "Corrosive"
     }
 }
 
@@ -72,7 +89,7 @@ export class Magnetic extends Planet{
         super(distance)
     }
 
-    PlanetAccepts(load: Load): boolean {
+    PlanetAcceptsLoad(load: Load): boolean {
         if (
             load instanceof Supplies || 
             load instanceof OxygenTanks || 
@@ -80,6 +97,10 @@ export class Magnetic extends Planet{
             load instanceof ArmoredCapsules
         ){ return true
         } return false
+    }
+
+    PlanetType(): string {
+        return "Magnetic"
     }
 }
 
@@ -89,9 +110,13 @@ export class LowGravity extends Planet{
         super(distance)
     }
 
-    PlanetAccepts(load: Load): boolean {
+    PlanetAcceptsLoad(load: Load): boolean {
         if (load instanceof Load) {
             return true
         } return false
+    }
+
+    PlanetType(): string {
+        return "Low Gravity"
     }
 }

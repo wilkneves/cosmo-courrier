@@ -13,6 +13,8 @@ export abstract class Spaceship{
         this.velocity = velocity
     }
 
+    abstract SpaceshipType(): string;
+
     SpaceshipTransport(load: Load): boolean {
         if (load.weight <= this.weight_capacity) {
             return true
@@ -22,7 +24,7 @@ export abstract class Spaceship{
     
 }
 
-class CargoShip extends Spaceship{
+export class CargoShip extends Spaceship{
     constructor(){
         const weight_capacity = 500
         const fuel_capacity = 450
@@ -31,9 +33,13 @@ class CargoShip extends Spaceship{
 
         super(weight_capacity, fuel_capacity, fuel_consumption, velocity)
     }
+
+    SpaceshipType(): string {
+        return "Cargo Ship"
+    }
 }
 
-class LightShip extends Spaceship{
+export class LightShip extends Spaceship{
     constructor(){
         const weight_capacity = 50
         const fuel_capacity = 450
@@ -42,9 +48,13 @@ class LightShip extends Spaceship{
 
         super(weight_capacity, fuel_capacity, fuel_consumption, velocity)
     }
+
+        SpaceshipType(): string {
+        return "Light Ship"
+    }
 }
 
-class FastShip extends Spaceship{
+export class FastShip extends Spaceship{
     constructor(){
         const weight_capacity = 75
         const fuel_capacity = 450
@@ -53,9 +63,13 @@ class FastShip extends Spaceship{
 
         super(weight_capacity, fuel_capacity, fuel_consumption, velocity)
     }
+
+        SpaceshipType(): string {
+        return "Fast Ship"
+    }
 }
 
-class AutomaticShip extends Spaceship{
+export class AutomaticShip extends Spaceship{
     constructor(){
         const weight_capacity = 300
         const fuel_capacity = 450
@@ -63,5 +77,9 @@ class AutomaticShip extends Spaceship{
         const velocity = 4000
 
         super(weight_capacity, fuel_capacity, fuel_consumption, velocity)
+    }
+
+        SpaceshipType(): string {
+        return "Automatic Ship"
     }
 }
