@@ -7,23 +7,23 @@ export abstract class Planet{
         this.distance = distance
     }
 
-    abstract PlanetType(): string;
-    abstract PlanetAcceptsLoad(load: Load): boolean;
+    abstract Type(): string;
+    abstract CanAccept(load: Load): boolean;
 }
 
 export class Geasous extends Planet{
     constructor() {
-        const distance = 800000
+        const distance = 100000
         super(distance)
     }
 
-    PlanetAcceptsLoad(load: Load): boolean {
+    CanAccept(load: Load): boolean {
         if (load instanceof Supplies || load instanceof OxygenTanks || load instanceof CommunicationModules) {
             return true
         } return false
     }
 
-    PlanetType(): string {
+    Type(): string {
         return "Geaseous"
     }
 }
@@ -34,41 +34,41 @@ export class Rocky extends Planet{
         super(distance)
     }
 
-    PlanetAcceptsLoad(load: Load): boolean {
+    CanAccept(load: Load): boolean {
         if (load instanceof Load) {
             return true
         } return false
     }
 
-    PlanetType(): string {
+    Type(): string {
         return "Rocky"
     }
 }
 
 export class Icy extends Planet{
     constructor() {
-        const distance = 600000
+        const distance = 200000
         super(distance)
     }
 
-    PlanetAcceptsLoad(load: Load): boolean {
+    CanAccept(load: Load): boolean {
         if (load instanceof Load) {
             return true
         } return false
     }
 
-    PlanetType(): string {
+    Type(): string {
         return "Icy"
     }
 }
 
 export class Corrosive extends Planet{
     constructor() {
-        const distance = 400000
+        const distance = 80000
         super(distance)
     }
 
-    PlanetAcceptsLoad(load: Load): boolean {
+    CanAccept(load: Load): boolean {
         if (
             load instanceof Supplies || 
             load instanceof OxygenTanks || 
@@ -78,18 +78,18 @@ export class Corrosive extends Planet{
         } return false
     }
 
-    PlanetType(): string {
+    Type(): string {
         return "Corrosive"
     }
 }
 
 export class Magnetic extends Planet{
     constructor() {
-        const distance = 300000
+        const distance = 120000
         super(distance)
     }
 
-    PlanetAcceptsLoad(load: Load): boolean {
+    CanAccept(load: Load): boolean {
         if (
             load instanceof Supplies || 
             load instanceof OxygenTanks || 
@@ -99,24 +99,24 @@ export class Magnetic extends Planet{
         } return false
     }
 
-    PlanetType(): string {
+    Type(): string {
         return "Magnetic"
     }
 }
 
 export class LowGravity extends Planet{
     constructor() {
-        const distance = 200000
+        const distance = 160000
         super(distance)
     }
 
-    PlanetAcceptsLoad(load: Load): boolean {
+    CanAccept(load: Load): boolean {
         if (load instanceof Load) {
             return true
         } return false
     }
 
-    PlanetType(): string {
+    Type(): string {
         return "Low Gravity"
     }
 }

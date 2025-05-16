@@ -6,4 +6,4 @@ import { Mission } from "./mission";
 // teste
 
 const teste1 = new Mission
-console.log(teste1.show())
+console.log(teste1.ShowMission())

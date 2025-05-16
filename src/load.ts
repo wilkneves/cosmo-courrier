@@ -5,7 +5,7 @@ export abstract class Load{
         this.weight = weight
     }
 
-    abstract LoadType(): string;
+    abstract Type(): string;
 }
 
 export class MiningTools extends Load{
@@ -14,7 +14,7 @@ export class MiningTools extends Load{
         super(weight)
     }
     
-    LoadType(): string {
+    Type(): string {
         return "Mining Tools"
     }
 }
@@ -25,7 +25,7 @@ export class ArmoredCapsules extends Load{
         super(weight)
     }
 
-    LoadType(): string {
+    Type(): string {
         return "Armored Capsules"
     }
 }
@@ -36,7 +36,7 @@ export class Supplies extends Load{
         super(weight)
     }
 
-    LoadType(): string {
+    Type(): string {
         return "Supplies"
     }
 }
@@ -47,7 +47,7 @@ export class OxygenTanks extends Load{
         super(weight)
     }
 
-    LoadType(): string {
+    Type(): string {
         return "Oxygen Tank"
     }
 }
@@ -58,7 +58,7 @@ export class BiologicalSamples extends Load{
         super(weight)
     }
 
-    LoadType(): string {
+    Type(): string {
         return "Biological Samples"
     }
 }
@@ -69,7 +69,7 @@ export class CommunicationModules extends Load{
         super(weight)
     }
 
-    LoadType(): string {
+    Type(): string {
         return "Communication Modules"
     }
 }

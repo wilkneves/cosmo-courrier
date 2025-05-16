@@ -1,22 +1,28 @@
 import { Load } from "./load"
+import { Planet } from "./planet"
 
 export abstract class Spaceship{
     public readonly weight_capacity: number
-    public readonly fuel_capacity: number
+    public readonly max_fuel: number
     public readonly fuel_consumption: number 
-    public readonly velocity: number
 
-    constructor(weight_capacity: number, fuel_capacity: number, fuel_consumption: number, velocity: number,) {
+    constructor(weight_capacity: number, fuel_capacity: number, fuel_consumption: number) {
         this.weight_capacity = weight_capacity
-        this.fuel_capacity = fuel_capacity
+        this.max_fuel = fuel_capacity
         this.fuel_consumption = fuel_consumption
-        this.velocity = velocity
     }
 
-    abstract SpaceshipType(): string;
+    abstract Type(): string
 
-    SpaceshipTransport(load: Load): boolean {
+    CanTransport(load: Load): boolean {
         if (load.weight <= this.weight_capacity) {
+            return true
+        } return false
+    }
+
+    CanGoTo(planet: Planet): boolean {
+        const autonomy = this.max_fuel / this.fuel_consumption
+        if (autonomy >= planet.distance) {
             return true
         } return false
     }
@@ -27,14 +33,13 @@ export abstract class Spaceship{
 export class CargoShip extends Spaceship{
     constructor(){
         const weight_capacity = 500
-        const fuel_capacity = 450
-        const fuel_consumption = 30
-        const velocity = 4000
+        const max_fuel = 600000
+        const fuel_consumption = 2
 
-        super(weight_capacity, fuel_capacity, fuel_consumption, velocity)
+        super(weight_capacity, max_fuel, fuel_consumption)
     }
 
-    SpaceshipType(): string {
+    Type(): string {
         return "Cargo Ship"
     }
 }
@@ -42,14 +47,13 @@ export class CargoShip extends Spaceship{
 export class LightShip extends Spaceship{
     constructor(){
         const weight_capacity = 50
-        const fuel_capacity = 450
-        const fuel_consumption = 30
-        const velocity = 4000
+        const max_fuel = 75000
+        const fuel_consumption = 0.5
 
-        super(weight_capacity, fuel_capacity, fuel_consumption, velocity)
+        super(weight_capacity, max_fuel, fuel_consumption)
     }
 
-        SpaceshipType(): string {
+        Type(): string {
         return "Light Ship"
     }
 }
@@ -57,14 +61,13 @@ export class LightShip extends Spaceship{
 export class FastShip extends Spaceship{
     constructor(){
         const weight_capacity = 75
-        const fuel_capacity = 450
-        const fuel_consumption = 30
-        const velocity = 4000
+        const max_fuel = 112500
+        const fuel_consumption = 0.75
 
-        super(weight_capacity, fuel_capacity, fuel_consumption, velocity)
+        super(weight_capacity, max_fuel, fuel_consumption)
     }
 
-        SpaceshipType(): string {
+        Type(): string {
         return "Fast Ship"
     }
 }
@@ -72,14 +75,13 @@ export class FastShip extends Spaceship{
 export class AutomaticShip extends Spaceship{
     constructor(){
         const weight_capacity = 300
-        const fuel_capacity = 450
-        const fuel_consumption = 30
-        const velocity = 4000
+        const max_fuel = 300000
+        const fuel_consumption = 1
 
-        super(weight_capacity, fuel_capacity, fuel_consumption, velocity)
+        super(weight_capacity, max_fuel, fuel_consumption)
     }
 
-        SpaceshipType(): string {
+        Type(): string {
         return "Automatic Ship"
     }
 }

@@ -18,17 +18,29 @@ export class Mission{
         this.load = randomInstance(loadType)
     }
 
-    viability(): string {
-         
+    Viability(): string {
+        if (this.spaceship.CanTransport(this.load)) {
+            if (this.spaceship.CanGoTo(this.planet)){
+                if (this.planet.CanAccept(this.load)) {
+                    return `${this.spaceship.Type()} delivered "${this.load.Type()}" to ${this.planet.Type()}`
+                } return `${(this.spaceship.Type())} failed to deliver "${this.load.Type()}": ${this.planet.Type()} did not accept the load.`
+            } return `${this.spaceship.Type()} was unable to reach the planet ${this.planet.Type()}`
+        } return `${this.spaceship.Type()} failed to deliver "${this.load.Type()}(${this.load.weight}KG)": exceeds capacity`
+    }
 
+    ShowMission(): string {
+        const title = `Mission: ${this.spaceship.Type()} -> ${this.planet.Type()}`
+        const spaceship = `Assigned spacecraft: ${this.spaceship.Type()} | Fuel: ${this.spaceship.max_fuel} | Capacity: ${this.spaceship.weight_capacity}KG`
+        const status = this.Viability()
+
+        return `${title.toUpperCase()} \n${spaceship} \n${status}`
+    }
+
+    ShowCargoSummary(): string {
         return "string"
     }
-    show(): string {
-        const informations = `
-        Planeta: ${this.planet.PlanetType()}
-        Nave: ${this.spaceship.SpaceshipType()}
-        Carga: ${this.load.LoadType()}`
 
-        return informations
+    ShowPlanetsVisited(): string {
+        return "string"
     }
 }
